@@ -1,16 +1,6 @@
 # travel_app_boilerplate
 
-A new Flutter project.
+A Flutter project.
 
-## Getting Started
-
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+# A starting point
+This project is a good starting point on your Flutter journey. This git repo will contain what we need to begin and start coding your first fully functional Flutter app, travel_app, for the DSC UNC Flutter workshop.
