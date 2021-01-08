@@ -1,3 +1,7 @@
+import 'dart:convert';
+
+import 'package:http/http.dart';
+
 class CountryData {
   String name;
   String fullName;
@@ -9,26 +13,32 @@ class CountryData {
 
   CountryData({ this.code });
 
-  void getData() {
+  Future<void> getData() async {
+    try {
+      // Get Data
+      Response response = await get('https://travelbriefing.org/' + code + '?format=json');
+      Map data = jsonDecode(response.body);
 
-    // Get Data
+      // Set Fields
+      name = data["names"]["name"];
 
-    // Set Fields
-      // name = data["names"]["name"];
+      fullName = data["names"]["full"];
 
-      // fullName = data["names"]["full"];
+      languages = List.generate(data["language"].length, 
+        (index) => data["language"][index]["language"]
+      );
 
-      // languages = List.generate(data["language"].length, 
-      //   (index) => data["language"][index]["language"]
-      // );
+      currency = data["currency"]["name"];
 
-      // currency = data["currency"]["name"];
-
-      // neighbors = List.generate(data["neighbors"].length, 
-      //   (index) => data["neighbors"][index]["name"]
-      // );
+      neighbors = List.generate(data["neighbors"].length, 
+        (index) => data["neighbors"][index]["name"]
+      );
       
-      // travelAdvise = data["advise"]["CA"]["advise"];
-      // travelAdvise = travelAdvise.substring(travelAdvise.indexOf('>') + 1, travelAdvise.lastIndexOf('<'));    
+      travelAdvise = data["advise"]["CA"]["advise"];
+      travelAdvise = travelAdvise.substring(travelAdvise.indexOf('>') + 1, travelAdvise.lastIndexOf('<'));    
+    } catch (e) {
+      print(e);
+    }
+    
   }
 }

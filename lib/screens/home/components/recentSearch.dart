@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app_boilerplate/components/countryCard.dart';
 
 class RecentSearch extends StatelessWidget {
   @override
@@ -6,65 +7,19 @@ class RecentSearch extends StatelessWidget {
     return Column(
       children: [
         Title(),
-        Row(
-          children: [
-            CountryCard()
-          ],
+        SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+            children: [
+              SizedBox(width: 12),
+              CountryCard(name: "United States", code: "US"),
+              CountryCard(name: "Netherlands", code: "NL"),
+              CountryCard(name: "Canda", code: "CA"),
+              SizedBox(width: 12),
+            ],
+          ),
         )
       ],
-    );
-  }
-}
-
-class CountryCard extends StatelessWidget {
-  const CountryCard({
-    Key key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Card(
-      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(6),
-        child: Container(
-          height: 140,
-          width: 160,
-          child: Stack(
-            children: [
-              Positioned.fill(
-                child: Column(
-                  children: [
-                    Image.asset(
-                      'assets/flags/us.png',
-                      height: 85,
-                      width: 160,
-                      fit: BoxFit.fill
-                    ),
-                    Container(
-                      width: 140,
-                      padding: EdgeInsets.symmetric(vertical: 8),
-                      child: Text(
-                        "United States", 
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)
-                      )
-                    )
-                  ],
-                ),
-              ),
-              Positioned.fill(
-                child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () {}
-                  )
-                )
-              )
-            ],
-          )
-        ),
-      )
     );
   }
 }
